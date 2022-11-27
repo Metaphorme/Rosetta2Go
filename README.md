@@ -94,6 +94,12 @@ Contributions welcome! Please open an issue to discuess at first, fork this repo
 With warmly advice and hard contribution from [Christopher](https://github.com/CondaPereira), we finished this program together.
 
 ## License
+
+[License of Rosetta](https://www.rosettacommons.org/software/license-and-download)
+
+License of Rosetta2Go:
+
+```
 MIT License
 
 Copyright (c) 2022 Metaphorme
@@ -115,3 +121,4 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+```
