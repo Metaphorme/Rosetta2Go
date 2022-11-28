@@ -1,0 +1,37 @@
+name: Test for Docker
+
+on:
+  push:
+    branches:
+      - 3.13
+    paths:
+      - Dockerfile
+
+  workflow_dispatch:
+
+jobs:
+  Test for Docker:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          ref: 3.13
+    
+      - name: Get Rosetta
+        env:
+          PASSWORD: ${{ secrets.PASSWORD }}
+        run: |
+          curl -O -u Academic_User:$PASSWORD https://www.rosettacommons.org/downloads/academic/3.13/rosetta_src_3.13_bundle.tgz
+
+      - name: Build
+        uses: docker/build-push-action@v3
+        with:
+          tags: rosetta
+      
+      - name: Test Rosetta
+        run: |
+          mkdir /data && cd /data
+          curl -O https://files.rcsb.org/view/3TDM.pd
+          docker exec rosetta score_jd2.mpi.linuxgccrelease -in:file:s /data/3tdm.pdb
