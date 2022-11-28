@@ -45,6 +45,7 @@ docker build -t rosetta .
 **Python3 required**, or other fileserver, like caddy.
 
 ```bash
+chmod +x build4singularity.sh
 ./build4singularity.sh
 ```
 

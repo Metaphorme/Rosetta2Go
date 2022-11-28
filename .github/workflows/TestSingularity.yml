@@ -32,6 +32,7 @@ jobs:
       
       - name: Build
         run: |
+          chmod +x build4singularity.sh
           ./build4singularity.sh
 
       - name: Test Rosetta
