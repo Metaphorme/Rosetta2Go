@@ -41,5 +41,5 @@ jobs:
 
       - name: Test Rosetta
         run: |
-          curl -O https://files.rcsb.org/view/3TDM.pd
+          curl -O https://files.rcsb.org/view/3TDM.pdb
           singularity exec rosetta.sif score_jd2.mpi.linuxgccrelease -in:file:s 3TDM.pdb

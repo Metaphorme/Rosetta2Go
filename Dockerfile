@@ -3,10 +3,11 @@
 # MIT License
 # Copyright (c) 2022 Metaphorme <https://github.com/Metaphorme>
 
+FROM alpine:3.12
+
+
 LABEL org.opencontainers.image.authors="Metaphorme"
 LABEL org.opencontainers.image.documentation="https://github.com/Metaphorme/Rosetta2Go"
-
-FROM alpine:3.12
 
 ARG DEBIAN_FRONTEND=noninteractive
 ARG PATH=$PATH:/usr/local/openmpi/bin
