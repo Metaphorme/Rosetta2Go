@@ -36,4 +36,4 @@ jobs:
       - name: Test Rosetta
         run: |
           curl -O https://files.rcsb.org/view/3TDM.pdb
-          docker exec rosetta score_jd2.mpi.linuxgccrelease -in:file:s 3TDM.pdb
+          docker run -i rosetta score_jd2.mpi.linuxgccrelease -in:file:s 3TDM.pdb

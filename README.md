@@ -78,9 +78,9 @@ Or:
 
 ```bash
 # Run on Docker
-docker exec rosetta score_jd2.mpi.linuxgccrelease -in:file:s /data/3tdm.pdb
+docker run -i rosetta score_jd2.mpi.linuxgccrelease -in:file:s /data/3tdm.pdb
 # Run on Docker with MPI
-mpirun -n <NUMBER_OF_RANKS> docker exec rosetta score_jd2.mpi.linuxgccrelease -in:file:s /data/3tdm.pdb
+mpirun -n <NUMBER_OF_RANKS> docker run -i rosetta score_jd2.mpi.linuxgccrelease -in:file:s /data/3tdm.pdb
 
 # Run on Singularity
 singularity exec rosetta.sif score_jd2.mpi.linuxgccrelease -in:file:s /data/3tdm.pdb
