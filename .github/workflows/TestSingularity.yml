@@ -30,6 +30,10 @@ jobs:
         run: |
           curl -O -u Academic_User:$PASSWORD https://www.rosettacommons.org/downloads/academic/3.13/rosetta_src_3.13_bundle.tgz
       
+      - name: Limit thread
+        run: |
+          sed -i 's/100/3/g' Singularity.def
+
       - name: Build
         run: |
           chmod +x build4singularity.sh

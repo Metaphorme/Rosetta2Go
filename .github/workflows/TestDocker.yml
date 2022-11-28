@@ -24,6 +24,10 @@ jobs:
           PASSWORD: ${{ secrets.PASSWORD }}
         run: |
           curl -O -u Academic_User:$PASSWORD https://www.rosettacommons.org/downloads/academic/3.13/rosetta_src_3.13_bundle.tgz
+      
+      - name: Limit thread
+        run: |
+          sed -i 's/100/3/g' Dockerfile
 
       - name: Build
         uses: docker/build-push-action@v3
