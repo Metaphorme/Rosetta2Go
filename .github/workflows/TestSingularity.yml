@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  Test for Singularity:
+  Test_for_Singularity:
     runs-on: ubuntu-latest
 
     steps:
