@@ -30,9 +30,8 @@ jobs:
           sed -i 's/100/3/g' Dockerfile
 
       - name: Build
-        uses: docker/build-push-action@v3
-        with:
-          tags: rosetta
+        run: |
+          docker build -t rosetta .
       
       - name: Test Rosetta
         run: |
