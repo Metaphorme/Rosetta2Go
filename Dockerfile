@@ -6,28 +6,23 @@
 FROM alpine:3.12
 
 
-LABEL org.opencontainers.image.authors="Metaphorme"
-LABEL org.opencontainers.image.documentation="https://github.com/Metaphorme/Rosetta2Go"
+LABEL org.opencontainers.image.authors="Metaphorme" \
+      org.opencontainers.image.documentation="https://github.com/Metaphorme/Rosetta2Go"
 
 ARG DEBIAN_FRONTEND=noninteractive
-ARG PATH=$PATH:/usr/local/openmpi/bin
-ARG LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/openmpi/lib
-ARG OMPI_ALLOW_RUN_AS_ROOT=1
-ARG OMPI_ALLOW_RUN_AS_ROOT_CONFIRM=1
 
-ENV PATH=/rosetta/source/bin:$PATH
-    LIB_LIBRARY_PATH=/rosetta/source/external/lib:$LIB_LIBRARY_PATH
-    PATH=$PATH:/usr/local/openmpi/bin
-    LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/openmpi/lib
-    OMPI_ALLOW_RUN_AS_ROOT=1
+ENV PATH=/rosetta/source/bin:$PATH \
+    LIB_LIBRARY_PATH=/rosetta/source/external/lib:$LIB_LIBRARY_PATH \
+    PATH=$PATH:/usr/local/openmpi/bin \
+    LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/openmpi/lib \
+    OMPI_ALLOW_RUN_AS_ROOT=1 \
     OMPI_ALLOW_RUN_AS_ROOT_CONFIRM=1
 
 COPY rosetta_src_3.13_bundle.tgz /tmp
 
 VOLUME /data
 
-RUN export FILE_SERVER='http://127.0.0.1:28293'; DEBIAN_FRONTEND=noninteractive \
-    && set -x; buildDeps='libexecinfo libexecinfo-dev build-base curl coreutils python3 libc6-compat pigz perl linux-headers bash zlib-dev vim nano' \
+RUN set -x; buildDeps='libexecinfo libexecinfo-dev build-base curl coreutils python3 libc6-compat pigz perl linux-headers bash zlib-dev vim nano' \
     && sed -i "s/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g" /etc/apk/repositories \
     && apk --update add --no-cache $buildDeps \
     && ln -s /usr/bin/python3 /usr/bin/python \
