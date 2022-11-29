@@ -1,0 +1,59 @@
+name: Test for Docker
+
+on:
+  push:
+    branches:
+      - 3.13
+    paths:
+      - Dockerfile
+
+  workflow_dispatch:
+    inputs:
+      Upload:
+        description: 'Upload image to GoFile'
+        required: false
+        default: 'false'
+
+jobs:
+  Build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Maximize build space
+        uses: easimon/maximize-build-space@master
+        with:
+          remove-dotnet: 'true'
+          remove-android: 'true'
+
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          ref: 3.13
+    
+      - name: Get Rosetta
+        env:
+          PASSWORD: ${{ secrets.PASSWORD }}
+        run: |
+          curl -O -u Academic_User:$PASSWORD https://www.rosettacommons.org/downloads/academic/3.13/rosetta_src_3.13_bundle.tgz
+      
+      - name: Limit threads
+        run: |
+          sed -i 's/100/6/g' Dockerfile
+
+      - name: Build Rosetta
+        run: |
+          docker build -t rosetta .
+      
+      - name: Test Rosetta
+        run: |
+          curl -O https://files.rcsb.org/view/3TDM.pdb
+          docker run -i rosetta score_jd2.mpi.linuxgccrelease -in:file:s 3TDM.pdb -ignore_unrecognized_res
+      
+      - name: Upload image
+        if: github.event.inputs.Upload == 'true'
+        run: |
+          docker save rosetta | xz -9 > rosetta-3.13.tar.xz
+          curl -fsSL git.io/file-transfer | bash
+          ./transfer gof --no-progress rosetta-3.13.tar.xz 2>&1 | tee gofile.log
+          echo "::warning file=gofile.io::$(cat gofile.log | grep https)"
+          echo "name=$(cat gofile.log | grep https | cut -f3 -d" ")" >> $GITHUB_OUTPUT
