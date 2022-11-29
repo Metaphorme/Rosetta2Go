@@ -1,4 +1,4 @@
-name: Test for Singularity
+name: Build for Singularity
 
 on:
   push:
