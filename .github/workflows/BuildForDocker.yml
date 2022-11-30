@@ -43,7 +43,8 @@ jobs:
 
       - name: Build Rosetta
         run: |
-          docker build -t rosetta .
+          chmod +x build4docker.sh
+          ./build4docker.sh
       
       - name: Test Rosetta
         run: |
