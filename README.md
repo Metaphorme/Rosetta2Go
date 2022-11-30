@@ -1,5 +1,11 @@
 # Rosetta
 
+[![BuildForDocker](https://github.com/Metaphorme/Rosetta2Go/actions/workflows/BuildForDocker.yml/badge.svg)](https://github.com/Metaphorme/Rosetta2Go/actions/workflows/BuildForDocker.yml)
+[![BuildForSingularity](https://github.com/Metaphorme/Rosetta2Go/actions/workflows/BuildForSingularity.yml/badge.svg)](https://github.com/Metaphorme/Rosetta2Go/actions/workflows/BuildForSingularity.yml)
+[![RosettaVersion](https://img.shields.io/badge/Rosetta-3.13/lastest-green)](https://www.rosettacommons.org/docs/latest/release-notes/)
+[![OpenMPIVersion](https://img.shields.io/badge/Open%20MPI-4.14/lastest-green)](https://www.open-mpi.org/)
+[![License](https://img.shields.io/github/license/Metaphorme/Rosetta2Go?logo=opensourceinitiative)](https://metaphorme.github.io/Rosetta2Go/LICENSE)
+
 The [Rosetta software](https://www.rosettacommons.org/) suite includes algorithms for computational modeling and analysis of protein structures. It has enabled notable scientific advances in computational biology, including de novo protein design, enzyme design, ligand docking, and structure prediction of biological macromolecules and macromolecular complexes.
 
 Rosetta is available to all non-commercial users for free and to commercial users for a fee.
