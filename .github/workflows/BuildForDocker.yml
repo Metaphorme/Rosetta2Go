@@ -49,7 +49,7 @@ jobs:
       - name: Test Rosetta
         run: |
           curl -O https://files.rcsb.org/view/3TDM.pdb
-          docker run -i rosetta score_jd2.mpi.linuxgccrelease -in:file:s 3TDM.pdb -ignore_unrecognized_res
+          docker run -v $PWD:/data -i rosetta score_jd2.mpi.linuxgccrelease -in:file:s /data/3TDM.pdb -ignore_unrecognized_res
       
       - name: Upload image
         if: github.event.inputs.Upload == 'true'
