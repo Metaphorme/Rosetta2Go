@@ -12,9 +12,8 @@ LABEL org.opencontainers.image.authors="Metaphorme" \
 ARG DEBIAN_FRONTEND=noninteractive \
     FILE_SERVER='http://127.0.0.1:28294'
 
-ENV PATH=/rosetta/source/bin:$PATH \
+ENV PATH=$PATH:/usr/local/openmpi/bin:/rosetta/source/bin \
     LIB_LIBRARY_PATH=/rosetta/source/external/lib:$LIB_LIBRARY_PATH \
-    PATH=$PATH:/usr/local/openmpi/bin \
     LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/openmpi/lib \
     OMPI_ALLOW_RUN_AS_ROOT=1 \
     OMPI_ALLOW_RUN_AS_ROOT_CONFIRM=1
