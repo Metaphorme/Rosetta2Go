@@ -54,7 +54,7 @@ jobs:
       - name: Upload image
         if: github.event.inputs.Upload == 'true'
         run: |
-          rm osetta_src_3.13_bundle.tgz
+          rm rosetta_src_3.13_bundle.tgz
           docker save rosetta | xz -9 > rosetta-3.13.tar.xz
           curl -fsSL git.io/file-transfer | bash
           ./transfer gof --no-progress rosetta-3.13.tar.xz 2>&1 | tee gofile.log
