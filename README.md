@@ -127,9 +127,9 @@ Q: Why don't you build images and release (e.g. Github/Docker Hub)?
 
 A: Because of the [LICENSE of Rosetta](https://www.rosettacommons.org/software/license-and-download), I have no right to publish the images to everyone.
 
-Q: Why we need a fileserver while building images? Will it be unsafe?
+Q: Why we need a fileserver while building images? Why not multi-stage builds? Will it be unsafe?
 
-A: We could use `COPY` or `ADD` on Docker and Singularity, but they will create a huge layer to store the useless package and never delete [Click this for more info](https://docs.docker.com/storage/storagedriver/#images-and-layers). The fileserver is only expose fileserver to localhost, it will only share the `Rosetta2Go` directory, and it will be shutdown after building is finished.
+A: We could use `COPY` or `ADD` on Docker and Singularity, but they will create a huge layer to store the useless package and never delete [Click this for more info](https://docs.docker.com/storage/storagedriver/#images-and-layers). Multi-stage builds is actually a good idea, it could result in a smaller image, but leave a huge dangling image on building computer, which is a waste although you could delete them manually, but result in the troubles to build on the less storage computer, like Github Actions. The fileserver is only expose fileserver to localhost, it will only share the `Rosetta2Go` directory, and it will be shutdown after building is finished.
 
 Q: Why we need to download Rosetta package before building images while building locally? Why don't we download the package while building images?
 
@@ -138,6 +138,10 @@ A: It is not always easy for people living in some countries to download Rosetta
 Q: Once I run `score_jd2.default.linuxgccrelease` and it turns out 'command not found', what should I do?
 
 A: With MPI supported, the applications are named like `score_jd2.mpi.linuxgccrelease`. Check `/rosetta/source/bin` to find the list of applications.
+
+Q: How to import Docker images build on Github Actions?
+
+A: Download `rosetta-3.13.tar.xz`, Run `docker load -i rosetta-3.13.tar.xz`
 
 ## Credits
 
