@@ -21,7 +21,7 @@ ENV PATH=/rosetta/source/bin:$PATH \
 
 VOLUME /data
 
-RUN set -x; buildDeps='libexecinfo libexecinfo-dev build-base curl coreutils python3 libc6-compat pigz perl linux-headers bash zlib-dev vim nano' \
+RUN set -x; buildDeps='libexecinfo libexecinfo-dev build-base curl coreutils python3 libc6-compat pigz perl linux-headers bash zlib-dev openssh vim nano' \
     && sed -i "s/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g" /etc/apk/repositories \
     && apk --update add --no-cache $buildDeps \
     && ln -s /usr/bin/python3 /usr/bin/python \
