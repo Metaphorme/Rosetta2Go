@@ -6,7 +6,7 @@
 [![OpenMPIVersion](https://img.shields.io/badge/Open%20MPI-4.14/lastest-green)](https://www.open-mpi.org/)
 [![License](https://img.shields.io/github/license/Metaphorme/Rosetta2Go?logo=opensourceinitiative)](https://metaphorme.github.io/Rosetta2Go/LICENSE)
 
-The [Rosetta software](https://www.rosettacommons.org/) suite includes algorithms for computational modeling and analysis of protein structures. It has enabled notable scientific advances in computational biology, including de novo protein design, enzyme design, ligand docking, and structure prediction of biological macromolecules and macromolecular complexes.
+The [Rosetta software suite](https://www.rosettacommons.org/) includes algorithms for computational modeling and analysis of protein structures. It has enabled notable scientific advances in computational biology, including de novo protein design, enzyme design, ligand docking, and structure prediction of biological macromolecules and macromolecular complexes.
 
 Rosetta is available to all non-commercial users for free and to commercial users for a fee.
 
@@ -169,7 +169,7 @@ I do appreciate to **every** contributor's warm heart and kindness, especially t
 
 [License of Rosetta](https://www.rosettacommons.org/software/license-and-download)
 
-License of Rosetta2Go:
+[License of Rosetta2Go](https://metaphorme.github.io/Rosetta2Go/LICENSE):
 
 ```
 MIT License
