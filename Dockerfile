@@ -33,3 +33,5 @@ RUN set -x; buildDeps='libexecinfo libexecinfo-dev build-base curl coreutils pyt
     && cd /rosetta/source \
     && ./scons.py -j100 bin mode=release extras=mpi \
     && rm -rf /tmp/*
+
+WORKDIR /data
