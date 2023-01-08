@@ -1,0 +1,30 @@
+# Rosetta2Go
+# https://github.com/Metaphorme/Rosetta2Go
+# MIT License
+# Copyright (c) 2022 Metaphorme <https://github.com/Metaphorme>
+
+FROM ubuntu:focal
+
+
+LABEL org.opencontainers.image.authors="Metaphorme" \
+      org.opencontainers.image.documentation="https://github.com/Metaphorme/Rosetta2Go"
+
+ARG DEBIAN_FRONTEND=noninteractive \
+    FILE_SERVER='http://127.0.0.1:28294'
+
+ENV PATH=$PATH:/rosetta/source/bin \
+    LIB_LIBRARY_PATH=/rosetta/source/external/lib:$LIB_LIBRARY_PATH \
+
+VOLUME /data
+
+RUN set -x; buildDeps='curl pigz python3 openmpi-bin libopenmpi-dev build-essential libopenmpi-dev zlib1g-dev vim nano' \
+    && apt-get update; DEBIAN_FRONTEND=noninteractive apt-get install -y $buildDeps \
+    && ln -s /usr/bin/python3 /usr/bin/python \
+    && cd /tmp \
+    && curl -SL $FILE_SERVER/rosetta_src_3.13_bundle.tgz | pigz -d | tar -x \
+    && mv /tmp/rosetta_src_2021.16.61629_bundle/main /rosetta \
+    && cd /rosetta/source \
+    && ./scons.py -j100 bin mode=release extras=mpi \
+    && rm -rf /tmp/*
+
+WORKDIR /data
